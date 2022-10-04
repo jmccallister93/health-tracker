@@ -4,30 +4,28 @@ import AddHealth from "./AddHealth";
 import SubtractHealth from "./SubtractHealth";
 
 const Health = (props?: any) => {
-  const [health, setHealth] = useState<number>(0);
-  const healthList: number[] = [];
+  
+  const [health, setHealth] = useState(0);
+  const healthList: number[]|number = [];
 
   const onChangeHandler = (event?: any) => {
-    const newHealth = event.target.value;
-    setHealth((prevState) => ([...health, newHealth]));
+    setHealth(event.target.value)
   };
 
   const onSubmitHandler = (event?: any) => {
     event.preventDefault();
-    healthList.push(health);
-    console.log(health, healthList);
+    healthList.push(health)
   };
 
   const healthForm = (
     <form onSubmit={onSubmitHandler}>
       <label>
         Input Health:
-        <input type={"number"} name="setHealth" onChange={onChangeHandler} />
+        <input type={"number"} name="setHealth" onChange={onChangeHandler}/>
         <button type="submit">Add</button>
       </label>
     </form>
   );
-
 
   return (
     <div className="health-wrapper">
